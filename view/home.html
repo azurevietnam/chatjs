@@ -1,0 +1,65 @@
+<div class="home">
+<div class="banner-chat">
+	<button ng-click="logout()" class="btn btn-default">Logout</button>
+	<span class= "name">Hi {{yourname}}</span>
+</div>
+<div class="list-channel">
+	<div class="container">
+		<div class="row">
+	        <div class="col-sm-6 col-sm-offset-3 login-signin">
+	            <div id="imaginary_container"> 
+	                <div class="input-group stylish-input-group search-list">
+	                    <input type="text" class="form-control"  placeholder="Search" ng-model="search" >
+	                    <span class="input-group-addon">
+	                        <button type="submit" ng-click="submitsearch()" >
+	                          	  <span class="glyphicon glyphicon-search"></span>
+	                        </button>  
+	                    </span>
+	                </div>
+	            </div>
+	        </div>
+		</div>
+		<div>
+		{{notfound}}
+			<ul>
+				<li ng-repeat="people in listpeople" ng-click="selectpeople(people.id,people.name)"><a href="">{{people.email}}</a></li>
+			</ul>
+		</div>
+		</div>
+		<div>
+			<div>
+			<h1>List friend</h1>
+				<ul>
+					<li ng-repeat="friended in listfriend" ng-click="selectpeople(friended.id,friended.name)"><a href="">{{friended.name}}</a></li>
+				</ul>
+			</div>
+			<div>
+			<h1>Notification</h1>
+				<ul>
+					<li ng-repeat="friend in friends" ng-click="new_friend(friend.data.channel,friend.data.name,friend.data.id)"><a href="">{{friend.data.name}}<span class="badge">{{friend.count}}</span></a></li>
+				</ul>
+			</div>
+			<!-- <div>
+				<h1>List room</h1>
+			</div> -->
+		</div>
+		
+</div>
+<div class="list-chat">
+<div class="render-chat">
+	<div class="name-chat"><h2>{{friend}}</h2><img src="images/add.png" ng-hide="add_friend_show" ng-click="add_friend()"></div>
+	<div class="conten-chat">
+		<ul>
+			<li ng-repeat= "message in messages track by $index" >
+				<p>{{message.name}}: {{message.message}}</p>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="send-chat">
+<form ng-submit="submituser()">
+	<input type="text" class="form-control" placeholder="Text input" ng-model="user.message">
+</form>
+</div>
+</div>
+</div>
